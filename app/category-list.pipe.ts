@@ -1,7 +1,10 @@
 import { Pipe } from '@angular/core';
 
 @Pipe({
-  name: 'categoryList'
+    name: 'categoryList',
+    //This is the default is true === stateless
+    //pure defines the pipe is stateless or stateful
+    pure:  true
 })
 export class CategoryListPipe {
   transform(mediaItems) {
@@ -11,6 +14,7 @@ export class CategoryListPipe {
         categories.push(mediaItem.category);
       }
     });
+    //Here we are returning a string but angular accepts many data types
     return categories.join(', ');
   }
 }

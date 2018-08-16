@@ -26,6 +26,7 @@ h2 {
 }
 .tools {
   margin-top: 8px;
+  margin-inside: 8px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -48,6 +49,7 @@ h2 {
   display: block;
   background-color: #ec4342;
   padding: 4px;
+  margin: 4px;
   font-size: .8em;
   border-radius: 4px;
   color: #ffffff;

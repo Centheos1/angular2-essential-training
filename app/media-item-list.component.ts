@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+/**
+ * A component is a part of the UI
+ */
+
 import { MediaItemService } from './media-item.service';
 
 @Component({

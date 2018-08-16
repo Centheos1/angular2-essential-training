@@ -4,8 +4,10 @@
     <div>{{ mediaItems | categoryList }}</div>
 </header>
 <section>
+    <!--This assigns css classes to change the view atributes-->
+    <!--Using a for loop over the mediaItems list-->
   <mw-media-item
-    [ngClass]="{'medium-movies': mediaItem.medium==='Movies', 'medium-series':mediaItem.medium==='Series'}" 
+    [ngClass]="{'medium-movies': mediaItem.medium==='Movies', 'medium-series':mediaItem.medium==='Series'}"
     *ngFor="let mediaItem of mediaItems"
     [mediaItem]="mediaItem"
     (delete)="onMediaItemDelete($event)"></mw-media-item>

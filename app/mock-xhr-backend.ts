@@ -3,6 +3,12 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { HttpBackend } from '@angular/common/http/src/backend';
 
+/**
+ * This is where the marshelling and unmarselling of HTTP requests and responses  happen
+ *
+ * Where is the error handling happening???
+ */
+
 export class MockXHRBackend implements HttpBackend {
   handle(request: HttpRequest<any>): Observable<HttpEvent<any>> {
     return new Observable((responseObserver: Observer<HttpResponse<any>>) => {
@@ -34,19 +40,23 @@ export class MockXHRBackend implements HttpBackend {
               status: 200
             };
           }
+          //Could error handing happen here?
           break;
         case 'POST':
           let mediaItem = request.body;
           mediaItem.id = this._getNewId();
           this._mediaItems.push(mediaItem);
           responseOptions = {status: 201};
+            //Could error handing happen here?
           break;
         case 'DELETE':
           let id = parseInt(request.url.split('/')[1]);
           this._deleteMediaItem(id);
           responseOptions = {status: 200};
+          //Could error handing happen here?
       }
 
+      //Or does error handing happen here?
       const responseObject = new HttpResponse(responseOptions);
       responseObserver.next(responseObject);
       responseObserver.complete();
@@ -63,6 +73,7 @@ export class MockXHRBackend implements HttpBackend {
     }
   }
 
+  //This is the id incrementer and returns the greatest index plus 1
   _getNewId() {
     if (this._mediaItems.length > 0) {
       return Math.max.apply(Math, this._mediaItems.map(mediaItem => mediaItem.id)) + 1;
@@ -113,6 +124,14 @@ export class MockXHRBackend implements HttpBackend {
       year: 2015,
       watchedOn: 1457166565384,
       isFavorite: false
-    }
+    }, {
+          id: 6,
+          name: "Pulp Fiction",
+          medium: "Movies",
+          category: "Cult Classic",
+          year: 2015,
+          watchedOn: '1999-12-31',
+          isFavorite: true
+      }
   ];
 }

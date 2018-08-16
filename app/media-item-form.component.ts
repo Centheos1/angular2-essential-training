@@ -5,6 +5,10 @@ import { Router } from '@angular/router';
 import { MediaItemService } from './media-item.service';
 import { lookupListToken } from './providers';
 
+/**
+ * The component is a kin to the Controller
+ */
+
 @Component({
   selector: 'mw-media-item-form',
   templateUrl: 'app/media-item-form.component.html',

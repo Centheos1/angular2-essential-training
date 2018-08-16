@@ -1,10 +1,15 @@
-<h2>{{ mediaItem.name }}</h2>
+<!--Using native pipe functions-->
+<h2>{{ mediaItem.name | slice: 0: 10  | uppercase}}</h2>
+<p>{{number}}</p>
 <ng-template [ngIf]="mediaItem.watchedOn">
+  <!--This is using a pipe to format the date-->
   <div>Watched on {{ mediaItem.watchedOn | date: 'shortDate' }}</div>
 </ng-template>
 <div>{{ mediaItem.category }}</div>
 <div>{{ mediaItem.year }}</div>
+<p>{{10 + 5}}</p>
 <div class="tools">
+  <!--This is been assigned the directive mwFavourite to implement a CSS class-->
   <svg
     [mwFavorite]="mediaItem.isFavorite"
     class="favorite" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -14,7 +19,8 @@
   <a class="delete" (click)="onDelete()">
     onDelete()
   </a>
-  <a class="details">
-    Useless Button
-  </a>
+  <div *ngIf="hide"><a class="details" (click)="onUseless()" >
+    onUseless()
+  </a></div>
+
 </div>
