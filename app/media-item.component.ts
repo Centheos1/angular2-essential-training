@@ -31,12 +31,10 @@ export class MediaItemComponent {
           this.hide = false;
           this.number = 'Lift Off !!!'
       }
-
   }
 
   printNumber(){
       this.number = String(this.counter)
   }
-
 
 }
